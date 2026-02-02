@@ -99,3 +99,6 @@ print(5 and 3) #logical
 print(5 & 3) #bitwise
 print(3<<2) #left shifting
 print(4>>3) #right shifting
+
+#revise left/right shifting of negative numbers (not urgent)
+
