@@ -91,5 +91,9 @@ if x:
 
 #Out of all the falsy values, only 0 == False is True because booleans
 # are a subset of int, anything else will be false
+
 #No falsy values are of the same object as the others so all are False
 # unless specified (if x = None, then X is None = True)
+
+#'is' is usually used with None only, since there is only one
+# object of None 

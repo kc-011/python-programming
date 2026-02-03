@@ -37,6 +37,7 @@ print("word * 0 =", word_into_0)
 
 #with Integers
 #Addition, Subtraction and Multiplication - Straightforward
+#If doing any of the above with float, the result will also be a float
 
 #Division
 print(8/4) #division will always return a float
@@ -102,3 +103,13 @@ print(4>>3) #right shifting
 
 #revise left/right shifting of negative numbers (not urgent)
 
+#File I/O
+#To write (w) to a file
+with open('example.txt', 'w') as f: #can use any variable instead of f
+    f.write("This is the first line\n")
+    f.write("This is another line")
+
+#To read (r) from a file
+with open('example.txt', 'r') as f:
+    content = f.read()
+    print(content)
