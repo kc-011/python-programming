@@ -158,3 +158,44 @@ def fun():
 fun()
 print(x) #Here, even though our print statement is outside, once the function is called,
 # the value of the variable is changed (due to 'global x')
+
+#LAMBDA Functions
+#they are used for much smaller functions or for functions within a function
+#can have only one expression
+
+x = lambda a : a + 10
+print(x(7))
+y = lambda a, b : a+b
+print(y(1,1))
+
+#let's say i want to make a multiplier, but i don't know which mulitplier (2x,3x,etc) or 
+# number i will multiply. we will make a function that takes a lambda function 
+
+def multi(n):
+    return lambda a : a*n
+
+doubleMulti = multi(2)
+print(doubleMulti(7))
+
+tripleMulti = multi(3)
+print(tripleMulti(9))
+
+#LAMBDA functions are widely used with map(), filter() and sorted() funcs
+#map() is a lazy way to avoid for loops or any kind of external iteration
+#it iterates over the given data with a function
+#example:
+
+number = [1,2,3,4,5,6]
+
+sq_number = list(map(lambda x : x**2, number))
+print(sq_number)
+
+#filter() returns the data which stands 'True' for the function
+
+odd_num = list(filter(lambda x: x%2!=0, number))
+print(odd_num)
+
+#sorted() used for custom sorting 
+fruit = ['apple', 'banana', 'lime', 'dragonfruit']
+new_fruit = sorted(fruit, key = lambda x : len(x))
+print(new_fruit)
