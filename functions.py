@@ -74,4 +74,87 @@ clientInfo(name="KC", age="22", school = "SFHS")
     # b=10     -> default
     # *args    -> extra positional (tuple)
     # **kwargs -> keyword args (dict)
-   
+
+
+#DECORATORS
+#used to wrap a function inside a function 
+#for example, we have multiple processes running and need to show that it has started 
+# and ended
+
+def run(func):
+    def wrapper(*args, **kwargs):
+        print("Starting")
+        result = func(*args, **kwargs)
+        print("Ending")
+        return result
+    return wrapper
+
+@run
+def add(a,b):
+    return a+b
+
+print(add(2,3))
+
+#unclear^ come back later
+
+
+#SCOPES
+x = 10
+
+def func():
+    if False:
+        x = 20
+    print(x)
+#this will not work because the local variable found at compile time is missing at runtime and
+# global variable is ignored due to LEGB
+#UnboundLocalError: cannot access local variable 'x' where it is not associated with a value
+
+#solution:
+x = 10
+
+def func():
+    global x #this line
+    if False:
+        x = 20
+    print(x)
+
+func()
+
+#same goes for enclosing functions
+def outer():
+    x = 10
+
+    def inner():
+        x = x + 1
+        print(x)
+
+    inner()
+
+#same error above too for the same reason
+#solution:
+def outer():
+    x = 10
+
+    def inner():
+        nonlocal x #this statement !!
+        x = x + 1
+        print(x)
+
+    inner()
+
+outer()
+
+#In the code below, LEGB doesn't really play a role but the fact that the variable is trying
+# to be printed before it was assigned is the problem 
+
+def func():
+    print(x)
+    x = 10 #Unbound Local Error
+
+x = 10
+def fun():
+    global x
+    x = 15
+fun()
+print(x) #Here, even though our print statement is outside, once the function is called,
+# the value of the variable is changed (due to 'global x')
