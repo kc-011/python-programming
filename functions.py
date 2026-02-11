@@ -199,3 +199,43 @@ print(odd_num)
 fruit = ['apple', 'banana', 'lime', 'dragonfruit']
 new_fruit = sorted(fruit, key = lambda x : len(x))
 print(new_fruit)
+
+#RECURSIVE FUNCTIONS
+
+def factorial(n):
+    if n<=1:
+        return n
+    else:
+        return n * factorial(n-1)
+print(factorial(4))
+
+
+def power(n,m):
+    if m == 0:
+        return 1
+    else:
+        return n* power(n,m-1)
+print(power(5,1))
+
+#below are questioned that I attempted using chatgpt, tomorrow I'll attempt
+# them myself (with reasoning)
+"""
+
+1. fibonacci(n)
+2. is_palindrome(word)
+3. sum_n(n)
+4. factorial(n)
+5. count_letter(word, letter)
+6. reverse(word)
+7. all_digits(word)
+8. is_increasing(lst)
+9. is_balanced(s) #brackets - ()(), (()), (()()), etc.
+10. has_adjacent_duplicates(word)
+11. contains_a(word)
+12. all_lowercase(word)
+
+"""
+
+#last topic for module 1 - strings operations (formatting, slicing, etc)
+
+#friday - module 1 project
