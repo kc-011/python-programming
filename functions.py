@@ -202,14 +202,6 @@ print(new_fruit)
 
 #RECURSIVE FUNCTIONS
 
-def factorial(n):
-    if n<=1:
-        return n
-    else:
-        return n * factorial(n-1)
-print(factorial(4))
-
-
 def power(n,m):
     if m == 0:
         return 1
@@ -220,7 +212,6 @@ print(power(5,1))
 #below are questioned that I attempted using chatgpt, tomorrow I'll attempt
 # them myself (with reasoning)
 """
-
 1. fibonacci(n)
 2. is_palindrome(word)
 3. sum_n(n)
@@ -233,9 +224,111 @@ print(power(5,1))
 10. has_adjacent_duplicates(word)
 11. contains_a(word)
 12. all_lowercase(word)
-
 """
-
 #last topic for module 1 - strings operations (formatting, slicing, etc)
-
 #friday - module 1 project
+
+#fibonacci - nth number 
+
+def fibonacci(n):
+    if n == 0 or n == 1: #n must never go into negative that's why we can't use n<=1
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(8)) #result: 21 ✔
+
+#palindrome checker
+
+def is_palindrome(word):
+    if word == "":
+        return True
+    else:
+        return word[0]==word[-1] and is_palindrome(word[1:len(word)-1])
+print(is_palindrome("racecar"))
+
+#sum up to n
+
+def sum_n(n):
+    if n<=1:
+        return n
+    else:
+        return n+ sum_n(n-1)
+print(sum_n(5))
+
+#factorial of n
+
+def factorial_n(n):
+    if n<=1:
+        return n
+    else:
+        return n * factorial_n(n-1)
+print(factorial_n(5))
+
+#count letter (how many times a letter appears in a word)
+
+def count_letter(word, letter):
+    if word == "":
+        return 0
+    else:
+        return (1 if word[0] == letter else 0) + count_letter(word[1:],letter)
+print(count_letter("greater","e"))
+
+#reverse a word
+
+def reverse(word):
+    if word == "":
+        return word
+    else:
+        #return word[-1] + reverse(word[:len(word)-1]) 
+        return reverse(word[1:]) + word[0] #both ways work
+print(reverse("honey"))
+
+#all digits checker
+
+def all_digits(word):
+    if word == "":
+        return True
+    else:
+        return word[0] in "0123456789" and all_digits(word[1:])
+print(all_digits("25b23"))
+
+#is increasing
+
+def is_increasing(lst):
+    if len(lst) <= 1:
+        return True
+    else:
+        return (lst[0] < lst[1]) and is_increasing(lst[1:])
+idk = [1,2,3,4,5,6,7,8,9]
+print(is_increasing(idk))
+
+#has adjacent duplicates
+
+def has_adjacent_duplicates(word):
+    if len(word) <= 1:
+        return False
+    else:
+        return word[0] == word[1] or has_adjacent_duplicates(word[1:])
+print(has_adjacent_duplicates("hassle"))
+
+#contains 'a'
+
+def contains_a(word):
+    if word == "":
+        return False
+    else:
+        return word[0] == 'a' or contains_a(word[1:])
+print(contains_a("pizza"))
+
+#all lowercase checker
+
+def all_lowercase(word):
+    if word == "":
+        return True
+    else:
+        return word[0] in "abcdefghijklmnopqrstuvwxyz" and all_lowercase(word[1:])
+print(all_lowercase("hellO"))
+
+#balanced brackets
+#try again tomorrow
