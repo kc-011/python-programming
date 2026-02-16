@@ -29,16 +29,23 @@ def char_counter():
 
 def palindrome():
     word = input("Enter your word: ")
-    def pal(word):
-        if word == "":
-            return word
+    word_list = []
+    for i in word:
+        if i.isalnum():
+            word_list.append(i)
+    edited_word = "".join(word_list)
+    print(edited_word)
+    def pal(edited_word):
+        if edited_word == "":
+            return edited_word
         else:
-            return pal(word[1:]) + word[0]
-    new_word = pal(word)
-    if word == new_word:
-        return f"{word} is a palindrome"
+            return pal(edited_word[1:]) + edited_word[0]
+    new_word = pal(edited_word)
+    print(new_word)
+    if edited_word.lower() == new_word.lower():
+        return f"\"{word}\" is a palindrome"
     else:
-        return f"{word} is not a palindrome"
+        return f"\"{word}\" is not a palindrome"
 
 def reverse():
     word = input("Enter your word/sentence: ")
