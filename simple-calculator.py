@@ -19,11 +19,33 @@ def calc():
     else:
         return "Please input a valid operation"
     
-if decision == "A":
+def char_counter():
+    word = input("Enter your word/sentence: ")
+    joined_word = word.replace(" ","")
+    count = 0
+    for i in joined_word:
+        count+=1
+    print(f"There are {count} number of characters in the phrase \"{word}\"")
+
+
+
+
+
+
+
+if decision == "A" or decision == "a":
     input1 = int(input("Enter your 1st number: "))
     operation = input("Enter your operator (+, -, *, /): ")
     input2 = int(input("Enter your 2nd number: "))
     print(f"{input1} {operation} {input2} = {calc()}")
-if decision == "B":
-    input3 = input("What tool would you like to use?\nA. Letter Count\nB. " \
-    "Palindrome Checker\nC. Reverse Word: ")
+if decision == "B" or decision == "b":
+    input3 = input("What tool would you like to use?\nA. Character Counter\nB. " \
+    "Palindrome Checker\nC. Reverse a Word: ")
+    if input3 == "A" or input3 == "a":
+        char_counter()
+    elif input3 == "B":
+        pass
+    elif input3 == "C":
+        pass
+    else:
+        print("Please enter a valid input")
