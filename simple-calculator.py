@@ -1,4 +1,4 @@
-import tkinter 
+#import tkinter 
 
 decision = input("Hi, What would you like to use? (A. Calculator, B. Word Analysis Tool \nor Type 'e' to Exit): ")
 
@@ -19,8 +19,11 @@ def calc():
     else:
         return "Please input a valid operation"
     
-while decision == "A":
+if decision == "A":
     input1 = int(input("Enter your 1st number: "))
     operation = input("Enter your operator (+, -, *, /): ")
     input2 = int(input("Enter your 2nd number: "))
     print(f"{input1} {operation} {input2} = {calc()}")
+if decision == "B":
+    input3 = input("What tool would you like to use?\nA. Letter Count\nB. " \
+    "Palindrome Checker\nC. Reverse Word: ")
