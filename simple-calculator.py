@@ -40,7 +40,15 @@ def palindrome():
     else:
         return f"{word} is not a palindrome"
 
-
+def reverse():
+    word = input("Enter your word/sentence: ")
+    def rev(word):
+        if word == "":
+            return word
+        else:
+            return rev(word[1:]) + word[0]
+    new_word = rev(word)
+    return new_word
 
 
 
@@ -58,8 +66,8 @@ elif decision == "B" or decision == "b":
         char_counter()
     elif input3 == "B" or input3 == "b":
         print(palindrome())
-    elif input3 == "C":
-        pass
+    elif input3 == "C" or input3 == "c":
+        print(reverse())
     else:
         print("Please enter a valid option")
 
