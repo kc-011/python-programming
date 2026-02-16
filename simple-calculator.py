@@ -1,7 +1,6 @@
+import tkinter 
 
-input1 = float(input("Enter your 1st number: "))
-operation = input("Enter your operator (+, -, *, /): ")
-input2 = float(input("Enter your 2nd number: "))
+decision = input("Hi, What would you like to use? (A. Calculator, B. Word Analysis Tool \nor Type 'e' to Exit): ")
 
 def calc():
     if operation == "+":
@@ -19,5 +18,9 @@ def calc():
             return input1/input2 #f"{result:.7f}" - this is silly because it makes 1.5 to 1.5000000
     else:
         return "Please input a valid operation"
-
-print(f"{input1} {operation} {input2} = {calc()}")
+    
+while decision == "A":
+    input1 = int(input("Enter your 1st number: "))
+    operation = input("Enter your operator (+, -, *, /): ")
+    input2 = int(input("Enter your 2nd number: "))
+    print(f"{input1} {operation} {input2} = {calc()}")
