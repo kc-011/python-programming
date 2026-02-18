@@ -1,13 +1,7 @@
-#import tkinter 
-#add GUI to this whenever free
-
 decision = input("Hi, What would you like to use? (A. Calculator, B. Word Analysis Tool \nor Type 'e' to Exit): ")
 
 def calc():
-    global input1, input2, operation
-    input1 = int(input("Enter your 1st number: "))
-    operation = input("Enter your operator (+, -, *, /): ")
-    input2 = int(input("Enter your 2nd number: "))
+
     if operation == "+":
         return input1+input2
         #addition = input1 + input2
@@ -65,6 +59,9 @@ def reverse():
 
 
 if decision == "A" or decision == "a":
+    input1 = float(input("Enter your 1st number: "))
+    operation = input("Enter your operator (+, -, *, /): ")
+    input2 = float(input("Enter your 2nd number: "))
     print(f"{input1} {operation} {input2} = {calc()}")
 
 elif decision == "B" or decision == "b":
@@ -89,6 +86,10 @@ else:
 2 things I'm not happy with:
 a) int/float user input in calculator - I want 3*4 to be 12 and not 12.0, but if I do int(input)
 then I cannot input a float, the calculator will use only whole numbers ?!?!
+
+Solution - It really doesn't matter. I changed it to 'float(input...)'. That stuff matters if you
+need to display it somewhere (frontend)
+
 b) I want the user input to repeat, once a task is complete, the main question "What would
  you like to use? (A. Calculator...." should be asked again instead of pressing the run button 
  repeatedly. to close the program, the user can input "e". tried this using while loop (even searched
