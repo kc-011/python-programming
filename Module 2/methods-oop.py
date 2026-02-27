@@ -39,3 +39,58 @@ print(Circle_1.area)
 #print(Circle_1.area())
 #print(Circle_1.circumference())
 
+class A:
+    x = 5
+
+a = A()
+A.x = 20
+
+print(a.x)
+
+class Demo:
+    def show(self):
+        print("Hello")
+
+d = Demo()
+Demo.show(d)
+
+class BankAccount:
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount < 1:
+            print("Please input an amount greater than 0")
+        else:
+            self.balance += amount
+    
+    def withdraw(self, amount):
+        if amount > 0:
+            if amount <= self.balance:
+                self.balance -= amount
+            else:
+                print("Insufficient Funds")
+        else:
+            print("Please input an amount greater than 0")
+    
+    def display(self):
+        print("Owner:" , self.owner)
+        print("Balance:" , self.balance)
+    
+    def transfer(self, other_account, amount):
+        self.balance -= amount
+        other_account.balance += amount
+
+acc1 = BankAccount("Karan", 2000)
+acc2 = BankAccount("Rahul", 1000)
+
+acc1.deposit(500)
+acc1.display()
+
+acc1.withdraw(400)
+acc1.display()
+
+acc1.transfer(acc2, 500)
+acc1.display()
+acc2.display()
