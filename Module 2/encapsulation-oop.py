@@ -32,7 +32,7 @@ ids.transfer_salary()
 print(ids._show_account())
 #print(ids.__salary) #displays error
 print(ids._Bank__salary) #this works but not recommended because whats the point of making it private then?
-print(ids._store_id()) #agaim, protected methods should not be accessed outside either
+print(ids._store_id()) #again, protected methods should not be accessed outside either
 
 #From the 2 lines above, we have seen that it is unethical to access protected/private stuff outside the class,
 # which is why it's better as a programmer to use getters and setters, where you can get the private attribute not by
