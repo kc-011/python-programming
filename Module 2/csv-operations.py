@@ -46,15 +46,15 @@ with open("Module 2/employees.csv", "w", newline="") as z:
 
 #let's process some data, like get the average salary 
 
-sum = 0
+total_sum = 0
 count = 0
-with open("Module 2/employees.csv") as idk:
-    file5 = csv.DictReader(idk) #easier to read using dict instead of list
+with open("Module 2/employees.csv") as i:
+    file5 = csv.DictReader(i) #easier to read using dict instead of list
 
     for row in file5:
-        sum += int(row["Salary"]) #incase Salary is a string
+        total_sum += int(row["Salary"]) #incase Salary is a string
         count += 1
-print(sum/count)
+print(f"{total_sum/count:.2f}")
 
-#above, if we use csv.reader, then we musr remember the index of the row, 
+#above, if we use csv.reader, then we must remember the index of the column, 
 # and use that instead. e.g - row[0] , row[1]. for "Salary" it will be int(row[3])
