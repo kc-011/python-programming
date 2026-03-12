@@ -99,3 +99,14 @@ while True:
                 if update_input2 == 4:
                     standard_input = input("Enter Standard: ")
                     obj.updatestandard(standard_input)
+
+'''
+Some stuff I would like to add:
+1. a 'Go back' option so that user can exit that function at any time 
+2. Maybe a random ID generator for the students (I'll be able to see the ID using show() func) 
+but it must be unique for all objects
+3. If there's anything else I can do for add func and not make it complicated
+4. Try except blocks for every user input (this will take years) - some simplified version maybe
+
+TBC
+'''
