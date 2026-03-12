@@ -6,6 +6,7 @@ class Student:
         self.age = age
         self.standard = standard
         self.__marks = marks
+        student_list.append(self)
 
 class StudentManagement(Student):
     def updatefname(self,fname):
@@ -20,15 +21,18 @@ class StudentManagement(Student):
     def updatestandard(self, standard):
         self.standard = standard
     
-    def deleteObj(self):
-        del self
+    def __repr__(self):
+        for i in student_list:
+            print(f"({i.id}, {i.fname} {i.lname})")
+        #return super().__repr__()
 
-student_objs = []
-student1 = StudentManagement(1, "Karun", "C", 15, "8B", "82%")
+student_list = []
+student1 = StudentManagement(1, "Kartik", "Ahuja", 15, "7C", "82%")
+student2 = StudentManagement(2, "Rohan", "Sharma", 17, "9B", "94%")
+#print(student_list)
+#student_list.append(student1)
 
-student_objs.append(student1)
-
-
+'''
 print(student1.fname)
 print(student1.lname)
 
@@ -37,5 +41,31 @@ student1.updatelname("Chawla")
 
 print(student1.fname)
 print(student1.lname)
+'''
+for i in student_list:
+    if i.id == 1:
+        print(i.age)
 
 
+while True:
+    try:
+        input1 = int(input("1. Show \n2. Delete \n3. Search \n4. Update \n5. Exit: "))
+        if not 1<=input1<=5:
+            print("Please input one of the following numbers only")
+        #else:
+            #break   
+    except ValueError:
+        print("Please enter a number")
+    if input1 == 5:
+        break
+    if input1 == 1:
+        StudentManagement.__repr__(self=student_list)
+    if input1 == 2:
+        del_input = int(input("Enter the ID of the student you want to delete: "))
+        for i in student_list:
+            if i.id == del_input:
+                student_list.remove(i)
+                print("Successfully Deleted")
+        
+            
+            
