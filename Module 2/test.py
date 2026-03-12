@@ -20,6 +20,10 @@ class StudentManagement(Student):
     
     def updatestandard(self, standard):
         self.standard = standard
+
+    def __str__(self):
+        print(f"ID: {self.id}, Full Name: {self.fname} {self.lname}, Age: {self.age}, Class: {self.standard}")
+        #return super().__str__()
     
     def __repr__(self):
         for i in student_list:
@@ -46,26 +50,52 @@ for i in student_list:
     if i.id == 1:
         print(i.age)
 
-
 while True:
     try:
-        input1 = int(input("1. Show \n2. Delete \n3. Search \n4. Update \n5. Exit: "))
+        input1 = int(input("1. Show \n2. Delete \n3. Search \n4. Update \n5. Exit:\n--> "))
         if not 1<=input1<=5:
-            print("Please input one of the following numbers only")
-        #else:
-            #break   
+            print("Please input one of the following numbers only")   
     except ValueError:
         print("Please enter a number")
+    
+    if_found = False
     if input1 == 5:
         break
+
     if input1 == 1:
         StudentManagement.__repr__(self=student_list)
+    
     if input1 == 2:
         del_input = int(input("Enter the ID of the student you want to delete: "))
         for i in student_list:
             if i.id == del_input:
                 student_list.remove(i)
-                print("Successfully Deleted")
-        
-            
-            
+                if_found = True
+        if if_found:
+            print("Successfully removed")
+        else:
+            print("Not found")
+
+    if input1 == 3:
+        search_input = int(input("Enter the ID of the student you want to search: "))
+        for obj in student_list:
+            if obj.id == search_input:
+                StudentManagement.__str__(obj)
+
+    if input1 == 4:
+        update_input1 = int(input("Enter the ID of the student you want to update: "))
+        for obj in student_list:
+            if obj.id == update_input1:
+                update_input2 = int(input("Which field would you like to update:\n1. First name\n2. Last name\n3. Age\n4. Standard\n--> ")) 
+                if update_input2 == 1:
+                    fname_input = input("Enter first name: ")
+                    obj.updatefname(fname_input)
+                if update_input2 == 2:
+                    lname_input = input("Enter last name: ")
+                    obj.updatelname(lname_input)
+                if update_input2 == 3:
+                    age_input = input("Enter Age: ")
+                    obj.updateage(age_input)
+                if update_input2 == 4:
+                    standard_input = input("Enter Standard: ")
+                    obj.updatestandard(standard_input)
