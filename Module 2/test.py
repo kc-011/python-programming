@@ -45,10 +45,11 @@ student1.updatelname("Chawla")
 
 print(student1.fname)
 print(student1.lname)
-'''
+
 for i in student_list:
     if i.id == 1:
         print(i.age)
+'''
 
 while True:
     try:
@@ -81,6 +82,11 @@ while True:
         for obj in student_list:
             if obj.id == search_input:
                 StudentManagement.__str__(obj)
+                if_found = True
+        if if_found:
+            pass
+        else:
+            print("Not found")
 
     if input1 == 4:
         update_input1 = int(input("Enter the ID of the student you want to update: "))
