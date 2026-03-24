@@ -65,10 +65,10 @@ for x in range(5):
 print(list3)'''
 
 import random
-width = 10 #columns
-height = 10 #rows
+width = 50 #columns
+height = 50 #rows
 #with list comprehension
-list2 = [[" " for i in range(height)] for i in range(width)]
+list2 = [[" " for i in range(width)] for i in range(height)]
 #print(list2)
 
 #list2[2][5] = "X"
@@ -76,12 +76,20 @@ list2 = [[" " for i in range(height)] for i in range(width)]
 y = height // 2
 for x in range(width):
     move = random.choice([-1,1]) #-1 UP, 1 DOWN
+    prev_y = y
     y += move
     y = max(0, min(height - 1, y))
-    if move == -1:
-        list2[y][x] = "/"
-    else:
-        list2[y][x] = "\\"
+    if y < prev_y:
+        if move == -1:
+            list2[y][x] = "/"
+        else:
+            list2[y][x-1] = "\\"
+    if prev_y < y:
+        if move == -1:
+            list2[y][x] = "/"
+        else:
+            list2[y-1][x] = "\\"
+    #print(prev_y)
 
 for i in list2:
     print("".join(i))
