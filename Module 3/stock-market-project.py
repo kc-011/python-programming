@@ -26,29 +26,6 @@ for i in range(360):
         t.left(2)
         t.circle(100)'''
 
-'''import random
-import time
-
-pos = 10  # starting position (middle-ish)
-width = 20  # limits
-
-for _ in range(50):  # number of steps
-    move = random.choice(["/", "\\"])
-    
-    if move == "/":
-        pos -= 1
-    else:
-        pos += 1
-
-    # keep it within bounds
-    if pos < 0:
-        pos = 0
-    if pos > width:
-        pos = width
-
-    print(" " * pos + move)
-    time.sleep(0.1)'''
-
 '''
 [][][][][][][]
 [][][][][][][]  need to create this
@@ -68,6 +45,7 @@ import random
 from rich.console import Console
 console = Console()
 from termcolor import colored
+import time
 
 width = 50 #columns
 height = 20 #rows
@@ -93,7 +71,8 @@ for x in range(width):
             list2[y][x] = colored("/", "green")
         else:
             list2[y-1][x] = colored("\\", "red")
-    #print(prev_y)
-
-for i in list2:
-    print("".join(i))
+    #print("\033[H\033[J")
+    
+for row in list2:
+    print("".join(row))
+    time.sleep(0.04)
