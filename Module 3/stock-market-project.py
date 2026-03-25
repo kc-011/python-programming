@@ -65,8 +65,12 @@ for x in range(5):
 print(list3)'''
 
 import random
+from rich.console import Console
+console = Console()
+from termcolor import colored
+
 width = 50 #columns
-height = 50 #rows
+height = 20 #rows
 #with list comprehension
 list2 = [[" " for i in range(width)] for i in range(height)]
 #print(list2)
@@ -81,14 +85,14 @@ for x in range(width):
     y = max(0, min(height - 1, y))
     if y < prev_y:
         if move == -1:
-            list2[y][x] = "/"
+            list2[y][x] = colored("/", "green")
         else:
-            list2[y][x-1] = "\\"
+            list2[y][x-1] = colored("\\", "red")
     if prev_y < y:
         if move == -1:
-            list2[y][x] = "/"
+            list2[y][x] = colored("/", "green")
         else:
-            list2[y-1][x] = "\\"
+            list2[y-1][x] = colored("\\", "red")
     #print(prev_y)
 
 for i in list2:
