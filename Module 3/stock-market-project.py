@@ -78,6 +78,5 @@ for x in range(width):
         time.sleep(0.05)
     #print("\033[H\033[J")
 
-#maybe like before, put a big for loop outside of everything, then initialize the list inside the loop,
-# because it will reset everytime we want a new graph. then put the join loop inside this big for loop and
-# also the ANSI escape code to clear the terminal. 
+# If you want to see graph printing in the same place, stretch the terminal to the top or atleast
+# the same length as the grid
