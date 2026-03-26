@@ -42,19 +42,20 @@ for x in range(5):
 print(list3)'''
 
 import random
-from rich.console import Console
-console = Console()
+# from rich.console import Console
+# console = Console()
 from termcolor import colored
 import time
 
 width = 50 #columns
 height = 20 #rows
 #with list comprehension
-list2 = [[" " for i in range(width)] for i in range(height)]
+#list2 = [[" " for i in range(width)] for i in range(height)]
 #print(list2)
 
 #list2[2][5] = "X"
 
+list2 = [[" " for i in range(width)] for i in range(height)]
 y = height // 2
 for x in range(width):
     move = random.choice([-1,1]) #-1 UP, 1 DOWN
@@ -71,8 +72,12 @@ for x in range(width):
             list2[y][x] = colored("/", "green")
         else:
             list2[y-1][x] = colored("\\", "red")
+    print("\033[1;1H", end="")
+    for row in list2:
+        print("".join(row))
+        time.sleep(0.05)
     #print("\033[H\033[J")
-    
-for row in list2:
-    print("".join(row))
-    time.sleep(0.04)
+
+#maybe like before, put a big for loop outside of everything, then initialize the list inside the loop,
+# because it will reset everytime we want a new graph. then put the join loop inside this big for loop and
+# also the ANSI escape code to clear the terminal. 
