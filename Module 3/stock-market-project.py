@@ -58,7 +58,12 @@ height = 20 #rows
 list2 = [[" " for i in range(width)] for i in range(height)]
 y = height // 2
 for x in range(width):
-    move = random.choice([-1,1]) #-1 UP, 1 DOWN
+    if y == 0:
+        move = 1
+    elif y == height-1:
+        move = -1
+    else:
+        move = random.choice([-1,1]) #-1 UP, 1 DOWN
     prev_y = y
     y += move
     y = max(0, min(height - 1, y))
@@ -75,8 +80,7 @@ for x in range(width):
     print("\033[1;1H", end="")
     for row in list2:
         print("".join(row))
-        time.sleep(0.05)
-    #print("\033[H\033[J")
+        time.sleep(0.01)
 
 # If you want to see graph printing in the same place, stretch the terminal to the top or atleast
 # the same length as the grid
