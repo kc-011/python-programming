@@ -54,7 +54,8 @@ height = 20 #rows
 #print(list2)
 
 #list2[2][5] = "X"
-
+green_count = 0
+red_count = 0
 list2 = [[" " for i in range(width)] for i in range(height)]
 y = height // 2
 for x in range(width):
@@ -70,17 +71,22 @@ for x in range(width):
     if y < prev_y:
         if move == -1:
             list2[y][x] = colored("/", "green")
+            green_count += 1
         else:
             list2[y][x-1] = colored("\\", "red")
+            red_count += 1
     if prev_y < y:
         if move == -1:
             list2[y][x] = colored("/", "green")
+            green_count +=1
         else:
             list2[y-1][x] = colored("\\", "red")
+            red_count +=1
     print("\033[1;1H", end="")
     for row in list2:
         print("".join(row))
         time.sleep(0.01)
-
+    print(f"Green Candles: {green_count}")
+    print(f"Red Candles: {red_count}")
 # If you want to see graph printing in the same place, stretch the terminal to the top or atleast
 # the same length as the grid
