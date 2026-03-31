@@ -94,6 +94,14 @@ for x in range(width):
     # were not getting cleared from previous run
     print("\033[K""Red Candles:" , red_count)
 
+if green_count > red_count: #for profit
+    multiplier = green_count - red_count #for loss
+elif red_count > green_count:
+    multiplier = red_count - green_count
+else:
+    multiplier = 0
+
+#The number above will be multiplied with whatever amount of money the user bets/sells whatever    
 
 # If you want to see graph printing in the same place, stretch the terminal to the top or atleast
 # the same length as the grid
