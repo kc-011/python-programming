@@ -46,6 +46,7 @@ import random
 # console = Console()
 from termcolor import colored
 import time
+import keyboard
 
 width = 50 #columns
 height = 20 #rows
@@ -59,6 +60,8 @@ red_count = 0
 list2 = [[" " for i in range(width)] for i in range(height)]
 y = height // 2
 for x in range(width):
+    if keyboard.is_pressed('space'):
+        break
     if y == 0:
         move = 1
     elif y == height-1:
@@ -86,7 +89,11 @@ for x in range(width):
     for row in list2:
         print("".join(row))
         time.sleep(0.01)
-    print(f"Green Candles: {green_count}")
-    print(f"Red Candles: {red_count}")
+    print("Press the Spacebar to stop")
+    print("\033[K""Green Candles:" , green_count) #added ANSI code to clear line because both digits 
+    # were not getting cleared from previous run
+    print("\033[K""Red Candles:" , red_count)
+
+
 # If you want to see graph printing in the same place, stretch the terminal to the top or atleast
 # the same length as the grid
