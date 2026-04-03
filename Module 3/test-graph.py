@@ -24,7 +24,7 @@ for i in aapl_values:
 
 width = len(scaled_aapl) #columns
 height = 20 #rows
-
+step = (max_val - min_val) / 19
 green_count = 0
 red_count = 0
 list2 = [[" " for i in range(width)] for i in range(height)]
@@ -51,10 +51,13 @@ for x in range(width):
          list2[y][x] = colored("‾", "blue")
 
     print("\033[1;1H", end="")
-    for row in list2:
-        print("".join(row))
+    for row_index, row in enumerate(list2):
+        price = max_val - (row_index*step)
+        price_label = f"{price:7.2f}"
+        print(price_label + " | " + "".join(row))
         time.sleep(0.01)
-    print("Press the Spacebar to stop")
+    
+    print("Press the Spacebar to stop\n")
     print("\033[K""Green Candles:" , green_count) #added ANSI code to clear line because both digits 
     # were not getting cleared from previous run
     print("\033[K""Red Candles:" , red_count)
