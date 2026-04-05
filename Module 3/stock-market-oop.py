@@ -5,7 +5,7 @@ class Account:
     stock_3 = 1200
     def __init__(self, username, password, message):
         self.username = username
-        self.password = password
+        self.__password = password
         self.message = message #to debug/check object
         self.balance = 10000
         self.shares = 0
