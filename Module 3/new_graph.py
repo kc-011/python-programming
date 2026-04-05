@@ -11,6 +11,10 @@ def stock_graph(stock, start, end, interval):
         for j in stock_data[i]:
             closing_values.append(j)
 
+    if closing_values == []:
+         print("No data found")
+         return None, None
+
     min_val = min(closing_values)
     max_val = max(closing_values)
 
@@ -31,9 +35,10 @@ def stock_graph(stock, start, end, interval):
     list2 = [[" " for i in range(width)] for i in range(height)]
 
     y = scaled_values[0]
+    print("\033[2J\033[H", end="")
     for x in range(width):
-        if keyboard.is_pressed('space'):
-            break
+        #if keyboard.is_pressed('space'):
+            #break - dropped this idea
         prev_y = y
         y = scaled_values[x]
     
@@ -56,19 +61,21 @@ def stock_graph(stock, start, end, interval):
             price = max_val - (row_index*step)
             price_label = f"{price:7.2f}"
             print(price_label + " | " + "".join(row))
-            time.sleep(0.01)
+            time.sleep(0.04)
         
         print(f"                                   Current price: {closing_values[x]}")
-        print("\nPress the Spacebar to stop")
+        #print("\nPress the Spacebar to stop")
         print("\nPress B to Buy | Press S to Sell")
         #print("\033[K""Green Candles:" , green_count) #added ANSI code to clear line because both digits 
         # were not getting cleared from previous run
         #print("\033[K""Red Candles:" , red_count)
         if keyboard.is_pressed('b'):
-             return f"Bought at {closing_values[x]}"
+             print(f"Bought at {closing_values[x]}")
+             return "buy", closing_values[x]
         if keyboard.is_pressed('s'):
-             return f"Sold at {closing_values[x]}"
-
+             print(f"Sold at {closing_values[x]}")
+             return "sell", closing_values[x]
+    return None, closing_values[-1]
     '''
     # no point of this if we're using real values
     if green_count > red_count: #for profit
