@@ -45,23 +45,23 @@ def stock_graph(stock, start, end, interval):
         #y = max(0, min(height - 1, y))
         if y < prev_y:
                 for i in range(prev_y-1, y-1, -1):
-                    list2[i][x] = colored("|", "green")
+                    list2[i][x] = colored("▐", "green")
                     #green_count += 1
 
         elif prev_y < y:
                 for i in range(prev_y,y):
-                    list2[i][x] = colored("|", "red")
+                    list2[i][x] = colored("▐", "red")
                     #red_count +=1
         
         else:
-            list2[y][x] = colored("‾", "blue")
+            list2[y][x] = colored("‾", "blue", attrs=["bold"])
 
         print("\033[1;1H", end="")
         for row_index, row in enumerate(list2):
             price = max_val - (row_index*step)
             price_label = f"{price:7.2f}"
             print(price_label + " | " + "".join(row))
-            time.sleep(0.04)
+            time.sleep(0.05)
         
         print(f"                                   Current price: {closing_values[x]}")
         #print("\nPress the Spacebar to stop")
@@ -71,11 +71,11 @@ def stock_graph(stock, start, end, interval):
         #print("\033[K""Red Candles:" , red_count)
         if keyboard.is_pressed('b'):
              print(f"Bought at {closing_values[x]}")
-             return "buy", closing_values[x]
+             return "buy", closing_values[x], stock_data
         if keyboard.is_pressed('s'):
              print(f"Sold at {closing_values[x]}")
-             return "sell", closing_values[x]
-    return None, closing_values[-1]
+             return "sell", closing_values[x], stock_data
+    return None, closing_values[-1], stock_data
     '''
     # no point of this if we're using real values
     if green_count > red_count: #for profit
