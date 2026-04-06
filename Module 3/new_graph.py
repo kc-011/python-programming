@@ -3,7 +3,6 @@ from termcolor import colored
 import time
 import keyboard
 
-
 def stock_graph(stock, start, end, interval):
     stock_data = yf.download(tickers=stock, interval=interval, start=start, end=end)
     closing_values = []
@@ -30,29 +29,22 @@ def stock_graph(stock, start, end, interval):
     width = len(scaled_values) #columns
     height = 20 #rows
     step = (max_val - min_val) / 19
-    #green_count = 0
-    #red_count = 0
     list2 = [[" " for i in range(width)] for i in range(height)]
 
     y = scaled_values[0]
     print("\033[2J\033[H", end="")
     for x in range(width):
-        #if keyboard.is_pressed('space'):
-            #break - dropped this idea
         prev_y = y
         y = scaled_values[x]
     
-        #y = max(0, min(height - 1, y))
         if y < prev_y:
                 for i in range(prev_y-1, y-1, -1):
                     list2[i][x] = colored("▐", "green")
-                    #green_count += 1
-
+        
         elif prev_y < y:
                 for i in range(prev_y,y):
                     list2[i][x] = colored("▐", "red")
-                    #red_count +=1
-        
+    
         else:
             list2[y][x] = colored("‾", "blue", attrs=["bold"])
 
@@ -64,11 +56,7 @@ def stock_graph(stock, start, end, interval):
             time.sleep(0.05)
         
         print(f"                                   Current price: {closing_values[x]}")
-        #print("\nPress the Spacebar to stop")
         print("\nPress B to Buy | Press S to Sell")
-        #print("\033[K""Green Candles:" , green_count) #added ANSI code to clear line because both digits 
-        # were not getting cleared from previous run
-        #print("\033[K""Red Candles:" , red_count)
         if keyboard.is_pressed('b'):
              print(f"Bought at {closing_values[x]}")
              return "buy", closing_values[x], stock_data
@@ -76,12 +64,3 @@ def stock_graph(stock, start, end, interval):
              print(f"Sold at {closing_values[x]}")
              return "sell", closing_values[x], stock_data
     return None, closing_values[-1], stock_data
-    '''
-    # no point of this if we're using real values
-    if green_count > red_count: #for profit
-        multiplier = green_count - red_count #for loss
-    elif red_count > green_count:
-        multiplier = red_count - green_count
-    else:
-        multiplier = 0
-    '''

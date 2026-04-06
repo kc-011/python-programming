@@ -1,14 +1,9 @@
 from new_graph import stock_graph
-
+import termcolor
 class Account:
-    #prices of stock - name them according to the popular ones
-    #stock_1 = 100
-    #stock_2 = 400
-    #stock_3 = 1200
-    def __init__(self, username, password, message):
+    def __init__(self, username, password):
         self.username = username
         self.__password = password
-        #self.message = message #to debug/check object
         self.balance = 10000
         self.portfolio = {}
         self.transactions = []
@@ -27,15 +22,12 @@ class Account:
         for stock, num in self.portfolio.items():
             print(f"{stock}: {num} shares")
 
-    
     def history(self):
         if self.transactions == []:
             print("Nothing to show here!")
         else:
             for i in self.transactions:
                 print(i)
-
-#what am i even doing in these two methods below ?? ---> i fixed it now
 
     def buy_stock(self, stock, price, num):
         total = price * num
@@ -88,10 +80,11 @@ def export_data(stock_data, stock, start_input):
         export_txt(stock_data, stock, start_input)
     else:
         print("Invalid choice")
+
 users = []
 demo_account = Account("IDS-Trainee", "Login@#123", "demo")
 private_account = Account("kc11", "chawla05", "private")
-#while True:
+
 print("\033[2J\033[H", end="")
 print("----------------------------\n📈 Stock Market Simulator 📉\n----------------------------")
 print("Hi, please choose the account you would like to use\n1. IDS-Trainee\n2. kc11")
@@ -111,9 +104,6 @@ while True:
         else:
             print("Please input a valid option")
 
-#current_account.buy_stock(1200,5)
-
-
 while True:
     print()
     print(f"What would you like to do today @{current_account.username} ?\n\n1. Check Balance\n2. Check Transactions\n3. Show Portfolio\n4. Trade\n5. Switch Account\n6. Exit")
@@ -126,10 +116,13 @@ while True:
             print("Please enter one of the below options only")
         elif userinput == 1:
             current_account.show_balance()
+        
         elif userinput == 2:
             current_account.history()
+        
         elif userinput == 3:
             current_account.show_portfolio()
+        
         elif userinput == 4:
             stock_input = input("Enter a stock (AAPL/MSFT/TSLA): ").upper()
             start_input = input("Enter Start date (YYYY-MM-DD): ")
@@ -152,9 +145,8 @@ while True:
                 elif action == "sell":
                     current_account.sell_stock(stock_input, price, num)
             
-            export = input("Export data? (y/n): ")
-
-            if export.lower() == "y":
+            export = input("Export data? (y/n): ").lower()
+            if export == "y":
                 export_data(stock_data, stock_input, start_input)
         
         elif userinput == 5:
@@ -169,5 +161,3 @@ while True:
         else:
             print("Thank you for using KC Stock Market Simulator 💫")
             break
-#I want to implement login system where the user can choose from either of the 2 accounts and then can 
-# do anything. maybe also the option to switch accounts somehow. Hurry up!! deadline - 2nd April
