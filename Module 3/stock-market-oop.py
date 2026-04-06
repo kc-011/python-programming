@@ -1,5 +1,4 @@
 from new_graph import stock_graph
-import termcolor
 class Account:
     def __init__(self, username, password):
         self.username = username
@@ -82,8 +81,8 @@ def export_data(stock_data, stock, start_input):
         print("Invalid choice")
 
 users = []
-demo_account = Account("IDS-Trainee", "Login@#123", "demo")
-private_account = Account("kc11", "chawla05", "private")
+demo_account = Account("IDS-Trainee", "Login@#123")
+private_account = Account("kc11", "chawla05")
 
 print("\033[2J\033[H", end="")
 print("----------------------------\n📈 Stock Market Simulator 📉\n----------------------------")

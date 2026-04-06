@@ -3,6 +3,7 @@ from termcolor import colored
 import time
 import keyboard
 
+
 def stock_graph(stock, start, end, interval):
     stock_data = yf.download(tickers=stock, interval=interval, start=start, end=end)
     closing_values = []
