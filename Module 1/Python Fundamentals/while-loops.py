@@ -11,7 +11,7 @@ while count < n:
 print(f"Sum of first {n} natural numbers is {sum}")"""
 
 #Prime Number Checker
-x = int(input("Enter a number: ")) 
+'''x = int(input("Enter a number: ")) 
 divisor = 1
 count = 0
 while divisor <= x: 
@@ -28,9 +28,21 @@ while divisor <= x:
         else:
             continue
     else:
-        divisor+=1
+        divisor+=1'''
  
- 
+usernum = int(input("Enter a number: "))
+i = 2
+while i<usernum:
+    if usernum%i == 0:
+        print(f"{usernum} is not a Prime Number")
+        break
+    i+=1
+else:
+    print(f"{usernum} is a Prime Number")
+
+#^^ so much simpler than above method 
+
+
 #Print a message 3 times
 """message = input("Enter a message: ")
 i = 0
