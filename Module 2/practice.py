@@ -102,3 +102,35 @@ def timer(seconds):
 
 timer(125)
 '''
+
+# Q. Check if an email ID is valid
+'''
+import re
+
+def check_email(email):
+    ptrn = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(ptrn, email)
+
+user_input = input('Enter an email ID: ')
+res = check_email(user_input)
+
+if res is None:
+    print('Email is Invalid')
+else:
+    print('Email is valid')
+'''
+
+# Q. Categorize a list of names into a dictionary where the key is the initial of the name
+# and the values are a list of names of that initial
+'''
+lst = ['shalini', 'shawarma', 'bubbly', 'arnav', 'mimi', 'boba', 'lulu']
+names = {}
+def cat_names(name_list):
+    for name in lst:
+        if name[0] not in names:
+            names[name[0].lower()] = []
+        names[name[0].lower()].append(name)
+    return names
+
+print(cat_names(lst))
+'''
