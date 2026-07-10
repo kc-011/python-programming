@@ -1,0 +1,25 @@
+# Simple Python program
+
+def calculate_total(prices):
+    total = 0
+
+    # Add each price to the total
+    for price in prices:
+        total += price
+
+    return total
+
+items = [120, 80, 150, 50]
+
+# Calculate the bill
+bill = calculate_total(items)
+
+print(f"Total Bill: {bill}")
+
+# Check if discount should be applied
+if bill > 300:
+    print("Discount Applied!")
+else:
+    print("No Discount")
+
+# End of program
