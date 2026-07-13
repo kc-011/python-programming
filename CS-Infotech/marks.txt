@@ -1,0 +1,6 @@
+Name, Math, Science, English
+Shalini, 88, 72, 89
+Amit, 63, 55, 50
+Rohan, 44, 59, 32
+Titu, 32, 12, 7
+Komal, 35, 42, 49

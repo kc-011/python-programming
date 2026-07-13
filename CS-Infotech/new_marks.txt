@@ -1,0 +1,6 @@
+Name, Math, Science, English, Total, Average, Grade
+Shalini, 88, 72, 89, 249, 83.0, A
+Amit, 63, 55, 50, 168, 56.0, C
+Rohan, 44, 59, 32, 135, 45.0, D
+Titu, 32, 12, 7, 51, 17.0, F
+Komal, 35, 42, 49, 126, 42.0, D
