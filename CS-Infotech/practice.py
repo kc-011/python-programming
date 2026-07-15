@@ -134,3 +134,70 @@ def cat_names(name_list):
 
 print(cat_names(lst))
 '''
+
+# Q. Make a register/login/change password system using file handling
+
+def register():
+    uname, upwd = [x.strip() for x in input('Enter username, password: ').split(",")]
+    isreg = False
+    with open(r'C:\Users\Karan\Desktop\ids-python\python-programming\CS-Infotech\users.txt','r') as fp:
+        lines = fp.readlines()
+        for line in lines:
+            username = line.strip().split(",")[0]
+            if username == uname:
+                print('User already exists')
+                isreg = True
+    if isreg == False:
+        with open(r'C:\Users\Karan\Desktop\ids-python\python-programming\CS-Infotech\users.txt', 'a') as fp:
+            fp.write(uname+", "+upwd+"\n")
+            print("Registration Successful")
+
+def login():
+    uname, upwd = [x.strip() for x in input('Enter username, password: ').split(",")]
+    islogin = False
+    with open(r'C:\Users\Karan\Desktop\ids-python\python-programming\CS-Infotech\users.txt', 'r') as fp:
+        lines = fp.readlines()
+        for line in lines:
+            username = line.strip().split(",")[0]
+            password = line.strip().split(",")[1]
+            if username == uname:
+                if password == upwd:
+                    print("Login Successful")
+                else:
+                    print("Password incorrect. Try again")
+                islogin = True
+    if islogin == False:
+        print("Username does not exist. Please Register")
+
+import os
+def change_pwd():
+    current_dir = os.getcwd()
+    file_name = 'users1.txt'
+    file_path = os.path.join(current_dir, file_name)
+    uname, oldpwd, newpwd = [x.strip() for x in input('Enter username, old password, new password: ').split(",")]
+    with open(r'C:\Users\Karan\Desktop\ids-python\python-programming\CS-Infotech\users.txt', 'r') as fp, open(file_path, 'w') as fp1:
+        lines = fp.readlines()
+        for line in lines:
+            username = line.strip().split(",")[0]
+            actpwd = line.strip().split(",")[1]
+            if username != uname:
+                fp1.write(line)
+            elif username == uname and actpwd == oldpwd:
+                fp1.write(username+", "+newpwd+"\n")
+    os.remove(r'C:\Users\Karan\Desktop\ids-python\python-programming\CS-Infotech\users.txt')
+    os.rename(file_path, r'C:\Users\Karan\Desktop\ids-python\python-programming\CS-Infotech\users.txt')
+
+while True:
+    user_in = int(input("\nHi, what would you like to do?\n1. Register\n2. Login\n3. Change password\n4. Exit\n--> "))
+    if user_in == 1:
+        register()
+    elif user_in == 2:
+        login()
+    elif user_in == 3:
+        change_pwd()
+    else:
+        print("Bye!")
+        break
+
+# basically in my change_pwd function, if i dont put the correct username or password, it deletes it???
+# i shall fix it soon cuz for now the core concept is done
