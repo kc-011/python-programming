@@ -1,0 +1,7 @@
+2026-07-21 12:32:08.701265    UNIQUE constraint failed: tbemp.empno
+2026-07-21 12:35:56.186903    UNIQUE constraint failed: tbemp.empno
+2026-07-21 12:38:34.108135    UNIQUE constraint failed: tbemp.empno
+2026-07-21 12:39:45.510537    UNIQUE constraint failed: tbemp.empno
+2026-07-21 12:45:38.561152    table tbemp has 3 columns but 1 values were supplied
+2026-07-21 12:46:42.737832    UNIQUE constraint failed: tbemp.empno
+2026-07-21 12:53:03.261409    'int' object is not subscriptable
