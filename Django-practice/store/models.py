@@ -6,3 +6,7 @@ class Product(models.Model):
     price = models.FloatField()
     description = models.TextField()
 
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    

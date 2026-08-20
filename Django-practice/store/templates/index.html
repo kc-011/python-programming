@@ -3,6 +3,21 @@
 <head>
     <title>My Django Website</title>
 </head>
+{% if user.is_authenticated %}
+
+    <p>Hello, {{ user.username }}!</p>
+
+    <form method="POST" action="/auth/logout/">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+
+{% else %}
+
+    <p>You are not logged in.</p>
+    <a href="/auth/login/">Login</a>
+
+{% endif %}
 <body>
     <h1>My Store</h1>
 
