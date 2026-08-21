@@ -8,15 +8,21 @@
 
     <h1>Create Account</h1>
 
-    <form method="POST">
+<form method="POST">
 
-        {% csrf_token %}
+    {% csrf_token %}
 
-        {{ form.as_p }}
+    <h2>Account Details</h2>
 
-        <button type="submit">Register</button>
+    {{ user_form.as_p }}
 
-    </form>
+    <h2>Customer Details</h2>
+
+    {{ customer_form.as_p }}
+
+    <button type="submit">Register</button>
+
+</form>
 
 </body>
 </html>

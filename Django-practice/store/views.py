@@ -1,6 +1,6 @@
 from django.shortcuts import HttpResponse, render, redirect
 from .models import Product
-from .forms import ContactForm, RegisterForm
+from .forms import ContactForm, RegisterForm, CustomerForm
 from django.contrib.auth import login
 
 def home(request):
@@ -32,15 +32,24 @@ def contact(request):
 
 def register(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
+        user_form = RegisterForm(request.POST)
+        customer_form = CustomerForm(request.POST)
 
-        if form.is_valid():
-            user = form.save()
+
+        if user_form.is_valid() and customer_form.is_valid():
+            user = user_form.save()
+            customer = customer_form.save(commit=False)
+            customer.user = user
+            customer.save()
             login(request, user)
             return redirect('home')
 
     else:
-        form = RegisterForm()
+        user_form = RegisterForm()
+        customer_form = CustomerForm()
 
-    return render(request, 'register.html', {'form':form})
-
+    context = {
+        'user_form': user_form,
+        'customer_form':customer_form
+    }
+    return render(request, 'register.html', context)
