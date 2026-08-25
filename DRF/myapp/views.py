@@ -47,3 +47,10 @@ def studentdetail(request, rolno):
     if request.method == 'DELETE':
         student.delete()
         return Response({'message':'Student deleted successfully'})
+
+@api_view(['GET'])
+def searchstudents(request):
+    query = request.GET.get('query')
+    students = Student.objects.filter(name__icontains=query)
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
