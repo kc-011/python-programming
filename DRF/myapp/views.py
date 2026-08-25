@@ -1,5 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from .models import Student
 from .serializer import StudentSerializer
 
@@ -54,3 +55,58 @@ def searchstudents(request):
     students = Student.objects.filter(name__icontains=query)
     serializer = StudentSerializer(students, many=True)
     return Response(serializer.data)
+
+class StudentsAPIView(APIView):
+    def get(self, request):
+        students = Student.objects.all()
+        serializer = StudentSerializer(students, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = StudentSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(serializer.errors)
+
+
+class StudentDetailAPIView(APIView):
+    def get_object(self, rolno):
+        try:
+            return Student.objects.get(rolno=rolno)
+        except Student.DoesNotExist:
+            return None
+
+    def get(self, request, rolno):
+        student= self.get_object(rolno)
+
+        if student is None:
+            return Response({'message': 'Student Not Found'},status=404)
+
+        serializer = StudentSerializer(student)
+        return Response(serializer.data)
+
+    def put(self, request, rolno):
+        student= self.get_object(rolno)
+
+        if student is None:
+            return Response({'message': 'Student Not Found'},status=404)
+
+        serializer = StudentSerializer(student, data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(serializer.errors)
+
+    def delete(self, request, rolno):
+        student = self.get_object(rolno)
+
+        if student is None:
+            return Response({'message': 'Student Not Found'},status=404)
+
+        student.delete()
+        return Response({'message': 'Student Deleted Successfully'})
